@@ -1,0 +1,38 @@
+.instruction-container {
+    text-align: center; /* Center align the content */
+    color: rgb(5, 4, 4); /* Set font color to black */
+    font-size: larger;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+ 
+  
+  .steps-container {
+    margin-top: 60px; /* Add some space between the topic and steps */
+  }
+  
+  .steps-container .step-section {
+    display: flex; /* Arrange sections horizontally */
+    margin-top: 50px; /* Add some space between sections */
+  }
+  
+  .steps-container .step-section .description-section {
+    flex: 1; /* Description section takes up 50% of the width */
+  }
+  
+  .steps-container .step-section .image-section {
+    flex: 1; /* Image section takes up 50% of the width */
+    align-items: center;
+  }
+  
+  .steps-container .step-section.right-align {
+    flex-direction: row-reverse; /* Reverse the order of flex items */
+  }
+  
+  .steps-container .step-section.right-align .description-section {
+    padding-right: 20px; /* Add padding to the right of the description section */
+  }
+  
+  .steps-container .step-section .image-section img {
+    max-width: 30%; /* Adjust image size to fit the container */
+    height: auto; /* Preserve aspect ratio */
+  }

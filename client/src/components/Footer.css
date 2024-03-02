@@ -1,0 +1,46 @@
+footer {
+    background-color: #000000; /* Example background color */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position:static;
+    bottom: 0;
+    width: 100%;
+}
+  
+.footer-content {
+    display: flex;
+    align-items: center;
+}
+  
+.footer-content img {
+    width: 50px; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some spacing between the logo and text */
+}
+  
+.footer-content p {
+    margin: 0;
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.social-icons > * {
+    margin: 0 10px; /* Add spacing between icons */
+}
