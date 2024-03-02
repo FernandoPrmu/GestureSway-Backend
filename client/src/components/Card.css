@@ -1,0 +1,41 @@
+/* Card.css */
+.custom-card {
+    margin-bottom: 20px;
+    transition: transform 0.2s; /* Add transition for smooth hover effect */
+    animation: scaleIn 0.5s ease; /* Apply scale-in animation */
+}
+
+.custom-card:hover {
+    transform: scale(1.05); /* Increase size of card on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add shadow effect on hover */
+}
+
+/* Card.css */
+.black-text {
+    color: black; /* Change font color to black */
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .col-md-3 {
+        flex: 0 0 calc(50% - 10px); 
+    }
+}
+
+/* Add scale-in animation keyframes */
+@keyframes scaleIn {
+    from {
+        transform: scale(0); /* Start with smaller scale */
+        opacity: 0; /* Start with opacity 0 */
+    }
+    to {
+        transform: scale(1); /* End with full scale */
+        opacity: 1; /* End with full opacity */
+    }
+}

@@ -1,0 +1,58 @@
+section{
+    color: rgb(4, 4, 4);
+  }
+  
+  .section1 .description {
+    display: flex;
+  }
+  
+  .section1 .image-description {
+    width: 30%; /* Adjust width as needed */
+    text-align: right; /* Right-align the image */
+    margin-left: 20px;
+  }
+  
+  .image-description img {
+    max-width: 100%; /* Ensure the image doesn't exceed its container */
+    height: auto; /* Maintain aspect ratio */
+    
+  }
+  
+  .section1 .vision-mission {
+    width: 70%; /*Adjust width as needed  */
+    padding-left: 60px; /* Add some padding between image and vision/mission */
+  }
+  
+  .vision-mission .vision,
+  .vision-mission .mission {
+    margin-bottom: 50px; /* Add some margin between vision and mission */
+    text-align: justify;
+    margin-right: 20px;
+  }
+  .section1 {
+    text-align: center;
+  }
+  .team-section {
+    margin-top: 30px; /* Add margin between mission/vision and team section */
+    margin-left: 20px;
+  }
+  
+  
+  .team-description {
+    width: 45%;
+    margin-bottom: 20px; /* Add margin below team description */
+    text-align: justify;
+  }
+  
+  .team-photos {
+    display: flex;
+    justify-content: flex-end; /* Ensure equal spacing between photos */
+    
+    
+  }
+  
+  .team-photo {
+    width: 25%; /* Adjust width of each photo */
+    margin-right: 20px; /* Add margin between images */
+  }
+  

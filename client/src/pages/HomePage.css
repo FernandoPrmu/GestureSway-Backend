@@ -1,0 +1,13 @@
+body {
+    /* background-image: url('../assets/BGIMG3.jpg'); */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Ensure the background image stays fixed as the content scrolls */
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+  }
+  
+  .container {
+    margin-top: 20px; /* Adjust margin-top as needed */
+  }

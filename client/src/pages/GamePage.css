@@ -1,0 +1,50 @@
+.backgroundImg {
+    position: relative;
+  }
+  
+  .backgroundImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px); /* Adjust the blur strength */
+  }
+  
+  .game-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.8); /* White background with opacity for content */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    color: #000000;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    color: #333333;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  
+  .login-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+  }
+  
+  .login-button:hover {
+    background-color: #333333;
+  }
+  

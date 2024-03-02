@@ -1,0 +1,35 @@
+/* Navbar Styling */
+.navbar {
+    background-color: black; /* Set background color */
+  }
+  
+  .navbar-brand {
+    font-family: monospace; /* Set font family */
+    font-weight: 700; /* Set font weight */
+    letter-spacing: 0.3rem; /* Set letter spacing */
+    color: inherit; /* Inherit text color */
+    text-decoration: none; /* Remove text decoration */
+  }
+  
+  .navbar-link {
+    margin: 0 1rem; /* Set margin */
+    color: white; /* Set text color */
+  }
+  
+  .navbar-link:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+  
+  .navbar-icon-button {
+    padding: 0; /* Remove default padding */
+  }
+  
+  .navbar-icon {
+    color: inherit; /* Inherit text color */
+  }
+  
+  /* User Menu Styling */
+  .user-menu {
+    margin-top: 45px; /* Set margin top */
+  }
+  
