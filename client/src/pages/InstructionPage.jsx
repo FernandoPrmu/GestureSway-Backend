@@ -30,7 +30,7 @@ export default function InstructionPage() {
 
           <div className="step-section ">
             <div className="description-section">
-              <h2>Step 2:  Login or Register </h2>
+              <h2>Step 2:  Login or Signup </h2>
               <p> <ul>This is the most important step in this web app. </ul>
               <ul>If you want to play the game you must register to the app by making an account. </ul>
               <ul>If you have already made an account then you can login to the account by using the previously used credentials .</ul></p>

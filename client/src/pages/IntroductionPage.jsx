@@ -1,8 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './IntroductionPage.css'; 
-import image1 from '../assets/Team.jpg';
 import team1Image from '../assets/team1.jpg'; 
 
 export default function IntroductionPage() {
@@ -10,64 +9,72 @@ export default function IntroductionPage() {
     <div>
       <Navbar />
       <div className="introduction-container">
+        <br>
+        
+        </br>
         <section className="section section1">
-          <h1>Who Are We?</h1>
-          <div className="description">
-            <div className="image-description ">
-              <img src={image1} alt="Image 1" />
-            </div>
-            <div className="vision-mission">
-              <div className="vision">
+            <div className="vision-mission">       
                 <h3>Our Vision</h3>
                 <p>
-                To empower individuals with hand mobility issues to regain strength, dexterity, and confidence through an engaging and therapeutic gaming experience. Our vision is to provide accessible and effective rehabilitation tools that utilize innovative hand gesture technology to facilitate physical therapy and enhance quality of life.
+                  To transform physical therapy for patients with hand mobility issues through an engaging, accessible, and personalised web-based hand gesture snake game, empowering patients to take charge of their rehabilitation journey and enhance their overall hand function.
                 </p>
-              </div>
-              <div className="mission">
                 <h3>Our Mission</h3>
                 <p>
-                Our mission is to develop a groundbreaking hand gesture-based snake game tailored for patients with hand mobility issues. By leveraging advanced machine learning algorithms and intuitive gameplay mechanics, we aim to create a rehabilitative gaming platform that not only entertains but also serves as a valuable tool for targeted hand exercises. Through collaboration with healthcare professionals and continuous user feedback, we are dedicated to delivering a user-friendly, inclusive, and impactful solution that promotes rehabilitation, independence, and well-being for individuals with hand mobility challenges
-                </p>
-              </div>
-            </div>
+                  Our mission is to develop a groundbreaking hand gesture-based snake game tailored for patients with hand mobility issues. By leveraging advanced machine learning algorithms and intuitive gameplay mechanics, we aim to create a rehabilitative gaming platform that not only entertains but also serves as a valuable tool for targeted hand exercises. Through collaboration with healthcare professionals and continuous user feedback, we are dedicated to delivering a user-friendly, inclusive, and impactful solution that promotes rehabilitation, independence, and well-being for individuals with hand mobility challenges.
+                </p>     
           </div>
         </section>
-        <div className="team-photos">
-            <img src={team1Image} alt="Team Photo 1" className="team-photo" />
-            <img src={team1Image} alt="Team photo 2" className="team-photo" />
-          </div>
         <section className="section team-section">
           <h2>The Team</h2>
           <div className="team-description">
             <p>
-            Welcome to the vibrant team behind our innovative project! We are a dynamic group of second-year students from the Informatics Institute of Technology, brought together by our shared passion for technology and collaborative spirit.</p>
-
-<p>Having crossed paths in our first year at the campus, we quickly discovered a harmonious rhythm in working together. Drawing from our collective experiences in previous group endeavors, we found it natural to blend our skills and insights seamlessly.
- or development and harnessing the power of Python for machine learning, we embarked on a journey filled with learning and innovation.</p>
-
-<p>Despite venturing into uncharted territory with machine learning and the MERN stack, we embraced the challenge wholeheartedly, driven by our unwavering determination and thirst for knowledge.</p>
-
-<p>At the helm of our team is Sadesh Weerasuriya, whose visionary leadership has been instrumental in steering our project towards success. Alongside him, Pramuditha Fernando contributed his expertise to the development of the machine learning component, while Sachin Abeywickrama and Chandupa Marapana spearheaded the frontend development efforts. Chavidu Bandara's prowess in backend development played a pivotal role in bringing our vision to life.</p>
-
-<p>As a team, we are immensely proud of what we have accomplished and are thrilled to share our creation with you. We invite you to experience our application firsthand and become part of our growing community.</p>
-
-<p>Thank you for joining us on this exhilarating journey!
+              Welcome to the vibrant team behind our innovative project! We are a dynamic group of second-year students from the Informatics Institute of Technology, brought together by our shared passion for technology and collaborative spirit.
+            </p>
+            <p>
+              Having crossed paths in our first year at the campus, we quickly discovered a harmonious rhythm in working together. Drawing from our collective experiences in previous group endeavors, we found it natural to blend our skills and insights seamlessly.
+            </p>
+            <p>
+              Despite venturing into uncharted territory with machine learning and the MERN stack, we embraced the challenge wholeheartedly, driven by our unwavering determination and thirst for knowledge.
+            </p>
+            <p>
+              At the helm of our team is Sadesh Weerasuriya, whose visionary leadership has been instrumental in steering our project towards success. Alongside him, Pramuditha Fernando contributed his expertise to the development of the machine learning component, while Sachin Abeywickrama and Chandupa Marapana spearheaded the frontend development efforts. Chavidu Bandara's prowess in backend development played a pivotal role in bringing our vision to life.
+            </p>
+            <p>
+              As a team, we are immensely proud of what we have accomplished and are thrilled to share our creation with you. We invite you to experience our application firsthand and become part of our growing community.
+            </p>
+            <p>
+              Thank you for joining us on this exhilarating journey!
             </p>
           </div>
-          {/* <div className="team-photos">
+          <div className="team-photos">
             <img src={team1Image} alt="Team Photo 1" className="team-photo" />
             <img src={team1Image} alt="Team photo 2" className="team-photo" />
-          </div> */}
+          </div>
         </section>
-        <section className="section">
-          <h2>Why This App?</h2>
-          <p>
-            Information about why the app was created, the target audience, and its significance. muscles trained 
-          </p>
+        <section className="section why-this-app">
+          <div className="subtopic">
+            <h3>Why This App?</h3>
+            <p>
+              This app was developed in response to the prolonged wait times for physiotherapy appointments in Sri Lanka. Patients often endure long waits to book appointments, leading to delays in receiving crucial therapy. Our app provides a solution by offering therapeutic hand exercises that patients can perform at home, reducing reliance on traditional physiotherapy sessions. Additionally, physiotherapists can incorporate the game into their practices to assess and improve patients' hand mobility.
+            </p>
+            <p>
+              "The Sri Lanka Paralysis Association estimates that approximately 12,000 individuals across the country are living with various degrees of paralysis, including hand paralysis."
+            </p>
+          </div>
+          <div className="subtopic">
+            <h3>Target Audience</h3>
+            <p>
+              Our primary target audience consists of individuals struggling with hand mobility issues, encompassing a wide range of conditions such as paralysis, arthritis, and injuries. By providing accessible and engaging hand exercises, our app aims to assist patients in improving their hand dexterity and strength. Additionally, the app may appeal to individuals interested in innovative gaming experiences that utilize hand gestures for interaction.
+            </p>
+          </div>
+          <div className="subtopic">
+            <h3>Muscles Helped</h3>
+            <p>
+              Our app primarily targets the muscles in the wrist, focusing on exercises to improve flexibility, strength, and coordination. By engaging in wrist-centric exercises, users can enhance their overall hand mobility and functionality. Exercises may include wrist rotations, flexion and extension movements, and grip strengthening exercises. These targeted exercises aim to address common issues associated with hand mobility impairments and promote rehabilitation.
+            </p>
+          </div>
         </section>
       </div>
-
-      
       <Footer />
     </div>
   );
