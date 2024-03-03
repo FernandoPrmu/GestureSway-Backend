@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import axios from 'axios';
 import './LoginPage.css';
 import userIcon from '../assets/person.png';
 import emailIcon from '../assets/email.png';
 import passwordIcon from '../assets/password.png';
+import backgroundImg from '../assets/gamepageimage.jpeg';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -13,7 +16,6 @@ const Signup = () => {
         password: '',
         age: '' 
     });
-    const [message, setMessage] = useState('');
     const [action, setAction] = useState('Sign In');
 
     const handleChange = (e) => {
@@ -29,19 +31,25 @@ const Signup = () => {
         
         // Validation checks
         if (action === 'Sign Up' && !formData.username) {
-            setMessage('Please enter a username.');
+            alert('Please enter a username.');
             return;
         }
         if (!formData.email) {
-            setMessage('Please enter an email address.');
+            alert('Please enter an email address.');
             return;
         }
         if (!formData.password) {
-            setMessage('Please enter a password.');
+            alert('Please enter a password.');
             return;
         }
-        if (action === 'Sign Up' && !formData.age) {
-            setMessage('Please enter your age.');
+        if (action === 'Sign Up' && (!formData.age || isNaN(formData.age) || formData.age < 0)) {
+            alert('Please enter a valid age.');
+            return;
+        }
+
+        // Check for invalid input
+        if (action === 'Sign Up' && isNaN(formData.age)) {
+            alert('Invalid input for age. Please enter a number.');
             return;
         }
 
@@ -60,6 +68,13 @@ const Signup = () => {
             axios.post('http://localhost:3001/register', { username, email, password, age }) 
                 .then(response => {
                     alert(response.data);
+                    // Clear form data after successful signup
+                    setFormData({
+                        username: '',
+                        email: '',
+                        password: '',
+                        age: '' 
+                    });
                 })
                 .catch(err => {
                     console.log(err);
@@ -69,49 +84,53 @@ const Signup = () => {
     };
 
     return (
-        <div className="login-body">
-            <div className="containerL">
-                <div className="header">
-                    <div className="text">{action === 'Sign In' ? 'Sign In' : 'Sign Up'}</div>
-                    <div className="underline"></div>
-                </div>
-                {message && <p>{message}</p>}
-                <form onSubmit={handleSubmit}>
-                    <div className="inputs">
-                        {action === 'Sign Up' && (
-                            <div className="input">
-                                <img src={userIcon} alt="Username" />
-                                <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
-                            </div>
-                        )}
-                        <div className="input">
-                            <img src={emailIcon} alt="Email" />
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-                        </div>
-                        <div className="input">
-                            <img src={passwordIcon} alt="Password" />
-                            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-                        </div>
-                        {action === 'Sign Up' && (
-                            <div className="input">
-                                <img src={userIcon} alt="Age" />
-                                <input type="text" name="age" value={formData.age} onChange={handleChange} placeholder="Age" />
-                            </div>
-                        )}
-                        <div className="submit-container">
-                            <button className="submit" type="submit">{action}</button>
-                        </div>
+        <div>
+            <Navbar/>
+            <div className="login-body">
+                <div className="containerL">
+                    <div className="header">
+                        <div className="text">{action === 'Sign In' ? 'Sign In' : 'Sign Up'}</div>
+                        <div className="underline"></div>
                     </div>
-                </form>
-                <div className="submit-container">
-                    <button className={action === 'Sign In' ? 'submit gray' : 'submit'} onClick={() => setAction('Sign In')}>
-                        <img src={userIcon} alt="Sign In" /> Sign In
-                    </button>
-                    <button className={action === 'Sign Up' ? 'submit gray' : 'submit'} onClick={() => setAction('Sign Up')}>
-                        <img src={userIcon} alt="Sign Up" /> Sign Up
-                    </button>
+                    <form onSubmit={handleSubmit}>
+                        <div className="inputs">
+                            {action === 'Sign Up' && (
+                                <div className="input">
+                                    <img src={userIcon} alt="Username" />
+                                    <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
+                                </div>
+                            )}
+                            <div className="input">
+                                <img src={emailIcon} alt="Email" />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+                            </div>
+                            <div className="input">
+                                <img src={passwordIcon} alt="Password" />
+                                <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+                            </div>
+                            {action === 'Sign Up' && (
+                                <div className="input">
+                                    <img src={userIcon} alt="Age" />
+                                    <input type="text" name="age" value={formData.age} onChange={handleChange} placeholder="Age" />
+                                </div>
+                            )}
+                            <div className="submit-container">
+                                {/* Increase length of the first submit button */}
+                                <button className="submit" style={{ width: '420px', backgroundColor: 'black' }} type="submit">{action}</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div className="submit-container">
+                        <button className={action === 'Sign In' ? 'submit gray' : 'submit'} onClick={() => setAction('Sign In')}>
+                             Sign In
+                        </button>
+                        <button className={action === 'Sign Up' ? 'submit gray' : 'submit'} onClick={() => setAction('Sign Up')}>
+                             Sign Up
+                        </button>
+                    </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
