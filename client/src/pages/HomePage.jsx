@@ -52,10 +52,8 @@ function HomePage() {
                 </div>
             </div>
             </div>
-            <br/>
             <Part1/>
             <Test/>
-            <br/>
             <Footer/>
         </div>
     );

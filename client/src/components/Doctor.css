@@ -1,24 +1,24 @@
 .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    gap: 100px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+  gap: 100px;
+  background-size: cover; /* Ensure background image covers the entire container */
+}
   
   .card-wrapper {
     display: flex;
     justify-content: flex-end; /* Align the cards to the left */
     width: 100%;
     padding: 20px;
-    background-color: #bababa; /* Background color for the box */
-    border-radius: 10px; /* Optional: Add border radius for rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for depth */
     gap: 10px;
   }
   
   .caption_1 {
     margin-right: 10px; /* Adjust as needed to create space between the caption and the cards */
+    top: 50%;
+    border-radius: 10px;
   }
   
   .caption_1 h1 {
@@ -30,7 +30,7 @@
   
   .custom-card-container {
     width: 30rem;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
