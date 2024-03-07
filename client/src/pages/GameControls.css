@@ -1,0 +1,113 @@
+/* GamePage.css */
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffd700; /* Light yellow-orange mix background */
+  }
+  /* .backgroundImg {
+    position: relative;
+  } */
+  
+  .game-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(255, 215, 0, 0.8); /* Light yellow-orange mix background with opacity for content */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    width: 70%;
+    max-width: 600px;
+    margin-bottom: 20px; /* Add margin to separate content from footer */
+  }
+  
+  .title {
+    color: #000000; /* Black title color */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .select-options {
+    margin-bottom: 20px;
+  }
+  
+  .select-menu {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px; /* Add margin between dropdown menus */
+  }
+  
+  .select-menu select {
+    appearance: none;
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text color */
+    padding: 10px 20px;
+    border: 2px solid #000000; /* Black border */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .select-menu::after {
+    content: '\25BC'; /* Unicode for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .select-menu select:hover {
+    background-color: #e6e6e6; /* Light gray background on hover */
+  }
+  
+  .difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px; /* Add margin to separate from hand selection */
+  }
+  
+  .label {
+    margin: 0 10px;
+  }
+  
+  input[type='radio'] {
+    display: none;
+  }
+  
+  input[type='radio'] + label {
+    background-color: #ffffff; /* White button background */
+    color: #000000; /* Black text color */
+    padding: 10px 20px;
+    border: 2px solid #000000; /* Black border */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type='radio']:checked + label {
+    background-color: #000000; /* Black background for selected button */
+    color: #ffffff; /* White text color for selected button */
+  }
+  
+  .play-button {
+    background-color: #ff4500; /* Orange-Red play button */
+    color: #ffffff; /* White text color */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    width: 100%; /* Make button full width */
+  }
+  
+  .play-button:hover {
+    background-color: #d14800; /* Darker orange-red on hover */
+  }
+  
