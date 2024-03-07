@@ -30,7 +30,7 @@ export default function Test() {
         <div className="caption_1">
           <h1>
             Domain experts' <br />
-            opinion about <span style={{ color: '#ffbf05' }}>GestureSway</span>
+            opinion about GestureSway
           </h1>
         </div>
         <Card className="custom-card-container">

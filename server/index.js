@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/Login", {
+mongoose.connect("mongodb+srv://SachinAbeywickrama:Nathari2002@gesturesway.svoq9wc.mongodb.net/?retryWrites=true&w=majority&appName=GestureSway", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
