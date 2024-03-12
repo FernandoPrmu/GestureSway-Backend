@@ -26,7 +26,7 @@
 }
 
 .text{
-    color: #3c009d;
+    color: #000000;
     font-size: 48px;
     font-weight: 700;
 }
@@ -34,7 +34,7 @@
 .underline{
     width: 90px;
     height: 6px;
-    background: #3c009d;
+    background: #000000;
     border-radius: 9px;
 }
 
