@@ -1,9 +1,10 @@
 // GameControlsPage.jsx
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import './GamePage.css'; // Import CSS file for styling
+
+import './GamePage.css'; 
 
 export default function GamePage() {
   const [selectedHand, setSelectedHand] = useState(null);
@@ -18,10 +19,9 @@ export default function GamePage() {
   };
 
   return (
+    <div>
+    <Navbar />
     <div className="game-container">
-      <Navbar />
-      {/* <div className="backgroundImg">
-              <img src={backgroundImg} alt="background" /> */}
       <div className="game-content">
         <h1 className="title">Select Your Hand and Difficulty Level</h1>
         <div className="hand-options">
@@ -85,9 +85,8 @@ export default function GamePage() {
           </button>
         </Link>
       </div>
-      {/* <Footer /> */}
     </div>
-    // </div>
-
+    {/* <Footer /> */}
+    </div>
   );
 }
