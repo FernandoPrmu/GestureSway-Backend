@@ -1,10 +1,12 @@
+// HomePage.js
+
 import Navbar from '../components/Navbar'
 import Card from '../components/Card';
 import introductionPic from '../assets/introduction.jpeg';
 import instructionPic from '../assets/instruction.jpeg';
 import snakeGamePic from '../assets/snake game.png';
 import feedbackPic from '../assets/feedback.jpeg';
-import './HomePage.css';
+import './global.css';
 import Footer from '../components/Footer';
 import Part1 from '../components/Part1';
 import Test from '../components/Doctor';
@@ -12,7 +14,7 @@ import Part2 from '../components/Part2';
 
 function HomePage() {
     return (
-        <div>
+        <div style={{ backgroundImage: 'none', backgroundColor: 'rgb(235, 235, 235)' }}>
             <Navbar/>
             <Part2/>
             <br></br>
