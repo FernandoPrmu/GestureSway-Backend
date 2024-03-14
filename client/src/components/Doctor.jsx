@@ -54,7 +54,7 @@ export default function Test() {
               Some quick example text to build on the card title and make up the bulk of the cards content.
             </Card.Text>
             <Button variant="primary" className="custom-button" onClick={() => handleShowModal("Description for Dr. Chinthaka Godigamuwa", DImage1)}>
-              Read more
+            Learn more
             </Button>
           </Card.Body>
         </Card>
@@ -79,7 +79,7 @@ export default function Test() {
               Another example text to build on the card title and make up the bulk of the cards content.
             </Card.Text>
             <Button variant="primary" className="custom-button" onClick={() => handleShowModal("Description for Dr. Dilushka Jayakody", DImage2)}>
-              Read more
+              Learn more
             </Button>
           </Card.Body>
         </Card>

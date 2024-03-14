@@ -1,8 +1,9 @@
-import React from 'react';
+/* eslint-disable react/no-unescaped-entities */
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './IntroductionPage.css'; 
 import team1Image from '../assets/team1.jpg'; 
+import Accordion_Intro from '../components/Accordion_Intro';
 
 export default function IntroductionPage() {
   return (
@@ -75,6 +76,8 @@ export default function IntroductionPage() {
           </div>
         </section>
       </div>
+      <Accordion_Intro/>
+      <br/>
       <Footer />
     </div>
   );

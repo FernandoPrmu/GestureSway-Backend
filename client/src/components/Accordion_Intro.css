@@ -1,0 +1,17 @@
+/* Accordion_Intro.css */
+
+/* Style the accordion headers */
+.AccordionHeader {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+  }
+  
+  /* Style the accordion bodies */
+  .AccordionBody {
+    font-size: 16px;
+    color: #000000;
+    padding: 10px;
+    background-color: #ffffff;
+  }
+  
