@@ -5,6 +5,7 @@ import GamePage from './pages/GamePage';
 import FeedbackPage from './pages/FeedbackPage';
 import LoginPage from './pages/LoginPage';
 import GameControlsPage from './pages/GameControls';
+import snakeGame from './pages/snakeGame';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' Component={HomePage} />
           <Route path='/HomePage' Component={HomePage} />
           <Route path='/GameControls' Component={GameControlsPage} />
+          <Route path='/SnakeGame' Component={snakeGame} />
 
         </Routes>
       </div>
