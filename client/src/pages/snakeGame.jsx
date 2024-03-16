@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import './snakeGame.css'; // Import external CSS file for styling
 
 const ROWS = 30;
 const COLS = 60;
@@ -56,40 +57,46 @@ const SnakeGame = () => {
     const newSnake = [...snake];
     let head = { ...newSnake[0] };
 
+    // Move the head according to the current direction
     switch (direction) {
       case Direction.UP:
-        head.y -= 1;
+        head.y = (head.y - 1 + ROWS) % ROWS; // Wrap around vertically
         break;
       case Direction.DOWN:
-        head.y += 1;
+        head.y = (head.y + 1) % ROWS; // Wrap around vertically
         break;
       case Direction.LEFT:
-        head.x -= 1;
+        head.x = (head.x - 1 + COLS) % COLS; // Wrap around horizontally
         break;
       case Direction.RIGHT:
-        head.x += 1;
+        head.x = (head.x + 1) % COLS; // Wrap around horizontally
         break;
       default:
         break;
     }
 
+    // Check for collision with itself or food
     if (isCollision(head)) {
       setIsGameOver(true);
       clearInterval(gameLoopIntervalRef.current);
       return;
     }
 
+    // Add the new head to the front of the snake
     newSnake.unshift(head);
 
+    // If the snake eats the food, generate a new food position
     if (head.x === food.x && head.y === food.y) {
       setFood({
         x: Math.floor(Math.random() * COLS),
         y: Math.floor(Math.random() * ROWS),
       });
     } else {
+      // If not, remove the last segment of the snake
       newSnake.pop();
     }
 
+    // Update the snake state with the new positions
     setSnake(newSnake);
   };
 
@@ -104,35 +111,22 @@ const SnakeGame = () => {
   };
 
   return (
-    <div>
+    <div className="snake-game-container"> {/* Apply CSS class for centering */}
       <h1>Snake Game</h1>
-      <div
-        style={{
-          width: COLS * CELL_SIZE,
-          height: ROWS * CELL_SIZE,
-          border: '1px solid black',
-          position: 'relative',
-        }}
-      >
+      <div className="game-board">
         {snake.map((segment, index) => (
           <div
             key={index}
+            className="snake-segment"
             style={{
-              width: CELL_SIZE,
-              height: CELL_SIZE,
-              backgroundColor: 'green',
-              position: 'absolute',
               left: segment.x * CELL_SIZE,
               top: segment.y * CELL_SIZE,
             }}
           ></div>
         ))}
         <div
+          className="food"
           style={{
-            width: CELL_SIZE,
-            height: CELL_SIZE,
-            backgroundColor: 'red',
-            position: 'absolute',
             left: food.x * CELL_SIZE,
             top: food.y * CELL_SIZE,
           }}
