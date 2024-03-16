@@ -1,38 +1,4 @@
-.App {
-    text-align: center;
-    padding-top: 20px;
-  }
-  
-  .grid {
-    display: grid;
-    margin: 20px auto;
+.game-canvas {
     border: 2px solid #333;
-  }
-  
-  .cell {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ccc;
-  }
-  
-  .snake {
-    background-color: #333;
-  }
-  
-  .food {
-    background-color: red;
-  }
-  
-  .game-over {
-    margin-top: 20px;
-  }
-  
-  .game-over h2 {
-    color: red;
-  }
-  
-  .game-over button {
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
+    margin: 20px auto;
+}
