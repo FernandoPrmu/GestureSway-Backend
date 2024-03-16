@@ -1,117 +1,146 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+const ROWS = 30;
+const COLS = 60;
+const CELL_SIZE = 20;
+
+const Direction = {
+  UP: 'UP',
+  DOWN: 'DOWN',
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+};
+
+const initialSnake = [{ x: 10, y: 10 }];
+const initialFood = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
 
 const SnakeGame = () => {
-    const canvasRef = useRef(null);
+  const [snake, setSnake] = useState(initialSnake);
+  const [direction, setDirection] = useState(Direction.RIGHT);
+  const [food, setFood] = useState(initialFood);
+  const [isGameOver, setIsGameOver] = useState(false);
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const context = canvas.getContext('2d');
-        const cellSize = 20;
-        const canvasSize = 400;
+  const gameLoopIntervalRef = useRef();
 
-        let snake = [{ x: 10, y: 10 }];
-        let food = { x: 15, y: 15 };
-        let dx = 1;
-        let dy = 0;
-        let score = 0;
-        let gameSpeed = 150;
+  useEffect(() => {
+    gameLoopIntervalRef.current = setInterval(moveSnake, 100);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      clearInterval(gameLoopIntervalRef.current);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [snake]);
 
-        const drawSnake = () => {
-            context.fillStyle = 'green';
-            snake.forEach(segment => {
-                context.fillRect(segment.x * cellSize, segment.y * cellSize, cellSize, cellSize);
-            });
-        };
+  const handleKeyDown = (e) => {
+    switch (e.key) {
+      case 'ArrowUp':
+        if (direction !== Direction.DOWN) setDirection(Direction.UP);
+        break;
+      case 'ArrowDown':
+        if (direction !== Direction.UP) setDirection(Direction.DOWN);
+        break;
+      case 'ArrowLeft':
+        if (direction !== Direction.RIGHT) setDirection(Direction.LEFT);
+        break;
+      case 'ArrowRight':
+        if (direction !== Direction.LEFT) setDirection(Direction.RIGHT);
+        break;
+      default:
+        break;
+    }
+  };
 
-        const drawFood = () => {
-            context.fillStyle = 'red';
-            context.fillRect(food.x * cellSize, food.y * cellSize, cellSize, cellSize);
-        };
+  const moveSnake = () => {
+    if (isGameOver) return;
 
-        const moveSnake = () => {
-            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-            snake.unshift(head);
+    const newSnake = [...snake];
+    let head = { ...newSnake[0] };
 
-            if (head.x === food.x && head.y === food.y) {
-                score++;
-                generateFood();
-            } else {
-                snake.pop();
-            }
+    switch (direction) {
+      case Direction.UP:
+        head.y -= 1;
+        break;
+      case Direction.DOWN:
+        head.y += 1;
+        break;
+      case Direction.LEFT:
+        head.x -= 1;
+        break;
+      case Direction.RIGHT:
+        head.x += 1;
+        break;
+      default:
+        break;
+    }
 
-            if (head.x < 0 || head.x >= canvasSize / cellSize || head.y < 0 || head.y >= canvasSize / cellSize || checkCollision()) {
-                gameOver();
-            }
-        };
+    if (isCollision(head)) {
+      setIsGameOver(true);
+      clearInterval(gameLoopIntervalRef.current);
+      return;
+    }
 
-        const generateFood = () => {
-            food = { x: Math.floor(Math.random() * (canvasSize / cellSize)), y: Math.floor(Math.random() * (canvasSize / cellSize)) };
-        };
+    newSnake.unshift(head);
 
-        const checkCollision = () => {
-            return snake.slice(1).some(segment => segment.x === snake[0].x && segment.y === snake[0].y);
-        };
+    if (head.x === food.x && head.y === food.y) {
+      setFood({
+        x: Math.floor(Math.random() * COLS),
+        y: Math.floor(Math.random() * ROWS),
+      });
+    } else {
+      newSnake.pop();
+    }
 
-        const gameOver = () => {
-            alert('Game Over! Your score: ' + score);
-            snake = [{ x: 10, y: 10 }];
-            dx = 1;
-            dy = 0;
-            score = 0;
-        };
+    setSnake(newSnake);
+  };
 
-        const clearCanvas = () => {
-            context.clearRect(0, 0, canvasSize, canvasSize);
-        };
+  const isCollision = (head) => {
+    return (
+      head.x < 0 ||
+      head.x >= COLS ||
+      head.y < 0 ||
+      head.y >= ROWS ||
+      snake.some((segment) => segment.x === head.x && segment.y === head.y)
+    );
+  };
 
-        const draw = () => {
-            clearCanvas();
-            drawSnake();
-            drawFood();
-        };
-
-        const update = () => {
-            moveSnake();
-        };
-
-        const gameLoop = () => {
-            update();
-            draw();
-            setTimeout(gameLoop, gameSpeed);
-        };
-
-        gameLoop();
-
-        document.addEventListener('keydown', event => {
-            const keyPressed = event.key;
-
-            if (keyPressed === 'ArrowUp' && dy === 0) {
-                dx = 0;
-                dy = -1;
-            }
-
-            if (keyPressed === 'ArrowDown' && dy === 0) {
-                dx = 0;
-                dy = 1;
-            }
-
-            if (keyPressed === 'ArrowLeft' && dx === 0) {
-                dx = -1;
-                dy = 0;
-            }
-
-            if (keyPressed === 'ArrowRight' && dx === 0) {
-                dx = 1;
-                dy = 0;
-            }
-        });
-
-        return () => {
-            document.removeEventListener('keydown');
-        };
-    }, []);
-
-    return <canvas ref={canvasRef} width="400" height="400" />;
+  return (
+    <div>
+      <h1>Snake Game</h1>
+      <div
+        style={{
+          width: COLS * CELL_SIZE,
+          height: ROWS * CELL_SIZE,
+          border: '1px solid black',
+          position: 'relative',
+        }}
+      >
+        {snake.map((segment, index) => (
+          <div
+            key={index}
+            style={{
+              width: CELL_SIZE,
+              height: CELL_SIZE,
+              backgroundColor: 'green',
+              position: 'absolute',
+              left: segment.x * CELL_SIZE,
+              top: segment.y * CELL_SIZE,
+            }}
+          ></div>
+        ))}
+        <div
+          style={{
+            width: CELL_SIZE,
+            height: CELL_SIZE,
+            backgroundColor: 'red',
+            position: 'absolute',
+            left: food.x * CELL_SIZE,
+            top: food.y * CELL_SIZE,
+          }}
+        ></div>
+      </div>
+      {isGameOver && <p>Game Over!</p>}
+    </div>
+  );
 };
 
 export default SnakeGame;
