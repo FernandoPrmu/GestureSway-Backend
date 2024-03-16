@@ -1,4 +1,31 @@
-.game-canvas {
-    border: 2px solid #333;
-    margin: 20px auto;
+/* snakeGame.css */
+.snake-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  
+}
+
+.game-board {
+  position: relative;
+  width: calc(60 * 20px); /* Assuming COLS = 60 and CELL_SIZE = 20px */
+  height: calc(30 * 20px); /* Assuming ROWS = 30 and CELL_SIZE = 20px */
+  border: 1px solid black;
+  background-color: rgb(0, 0, 0);
+}
+
+.snake-segment {
+  width: 20px; /* Assuming CELL_SIZE = 20px */
+  height: 20px; /* Assuming CELL_SIZE = 20px */
+  background-color: green;
+  position: absolute;
+}
+
+.food {
+  width: 20px; /* Assuming CELL_SIZE = 20px */
+  height: 20px; /* Assuming CELL_SIZE = 20px */
+  background-color: red;
+  position: absolute;
 }
