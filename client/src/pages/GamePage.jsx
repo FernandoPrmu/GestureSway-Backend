@@ -6,7 +6,7 @@ import './GamePage.css'; // Import CSS file for styling
 
 export default function GamePage() {
   return (
-    <div className="game-container">
+    <div className="game-container" >
       <Navbar />
       <div className="backgroundImg">
               <img src={backgroundImg} alt="background" />
