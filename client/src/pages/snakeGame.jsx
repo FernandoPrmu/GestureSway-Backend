@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './snakeGame.css'; // Import external CSS file for styling
+import './snakeGame.css'; 
 
 const ROWS = 30;
 const COLS = 60;
@@ -15,22 +15,45 @@ const Direction = {
 const initialSnake = [{ x: 10, y: 10 }];
 const initialFood = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
 
-const SnakeGame = () => {
+const SnakeGame = ({ difficulty }) => {
   const [snake, setSnake] = useState(initialSnake);
   const [direction, setDirection] = useState(Direction.RIGHT);
   const [food, setFood] = useState(initialFood);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [points, setPoints] = useState(0);
+  const [showResultsPopup, setShowResultsPopup] = useState(false);
 
   const gameLoopIntervalRef = useRef();
 
   useEffect(() => {
-    gameLoopIntervalRef.current = setInterval(moveSnake, 100);
+    // Adjust game loop interval based on difficulty
+    let interval = 100; // Default interval
+    switch (difficulty) {
+      case 'easy':
+        interval = 200;
+        break;
+      case 'medium':
+        interval = 100;
+        break;
+      case 'hard':
+        interval = 50;
+        break;
+      default:
+        interval = 100;
+    }
+    gameLoopIntervalRef.current = setInterval(moveSnake, interval);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       clearInterval(gameLoopIntervalRef.current);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [snake]);
+  }, [snake, difficulty]); // Include difficulty in the dependencies array
+
+  useEffect(() => {
+    if (isGameOver) {
+      setShowResultsPopup(true);
+    }
+  }, [isGameOver]);
 
   const handleKeyDown = (e) => {
     switch (e.key) {
@@ -46,6 +69,9 @@ const SnakeGame = () => {
       case 'ArrowRight':
         if (direction !== Direction.LEFT) setDirection(Direction.RIGHT);
         break;
+      case 'q':
+        endGame();
+        break;
       default:
         break;
     }
@@ -57,46 +83,40 @@ const SnakeGame = () => {
     const newSnake = [...snake];
     let head = { ...newSnake[0] };
 
-    // Move the head according to the current direction
     switch (direction) {
       case Direction.UP:
-        head.y = (head.y - 1 + ROWS) % ROWS; // Wrap around vertically
+        head.y = (head.y - 1 + ROWS) % ROWS;
         break;
       case Direction.DOWN:
-        head.y = (head.y + 1) % ROWS; // Wrap around vertically
+        head.y = (head.y + 1) % ROWS;
         break;
       case Direction.LEFT:
-        head.x = (head.x - 1 + COLS) % COLS; // Wrap around horizontally
+        head.x = (head.x - 1 + COLS) % COLS;
         break;
       case Direction.RIGHT:
-        head.x = (head.x + 1) % COLS; // Wrap around horizontally
+        head.x = (head.x + 1) % COLS;
         break;
       default:
         break;
     }
 
-    // Check for collision with itself or food
     if (isCollision(head)) {
-      setIsGameOver(true);
-      clearInterval(gameLoopIntervalRef.current);
+      endGame();
       return;
     }
 
-    // Add the new head to the front of the snake
     newSnake.unshift(head);
 
-    // If the snake eats the food, generate a new food position
     if (head.x === food.x && head.y === food.y) {
+      setPoints(points + 1);
       setFood({
         x: Math.floor(Math.random() * COLS),
         y: Math.floor(Math.random() * ROWS),
       });
     } else {
-      // If not, remove the last segment of the snake
       newSnake.pop();
     }
 
-    // Update the snake state with the new positions
     setSnake(newSnake);
   };
 
@@ -110,8 +130,19 @@ const SnakeGame = () => {
     );
   };
 
+  const endGame = () => {
+    setIsGameOver(true);
+    clearInterval(gameLoopIntervalRef.current);
+  };
+
+  const handleSeeResultsClick = () => {
+    // Handle the "See your overall results" button click
+    // You can navigate to another page or display a modal with overall results
+    alert('Overall results: ' + points + ' points'); // Example: Display alert with points
+  };
+
   return (
-    <div className="snake-game-container"> {/* Apply CSS class for centering */}
+    <div className="snake-game-container">
       <h1>Snake Game</h1>
       <div className="game-board">
         {snake.map((segment, index) => (
@@ -132,7 +163,12 @@ const SnakeGame = () => {
           }}
         ></div>
       </div>
-      {isGameOver && <p>Game Over!</p>}
+      {isGameOver && (
+        <div className="results-popup">
+          <p>You scored {points} points!</p>
+          <button onClick={handleSeeResultsClick}>See your overall results</button>
+        </div>
+      )}
     </div>
   );
 };
