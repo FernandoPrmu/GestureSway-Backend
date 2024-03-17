@@ -15,7 +15,7 @@ const Direction = {
 const initialSnake = [{ x: 10, y: 10 }];
 const initialFood = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
 
-const SnakeGame = ({ difficulty }) => {
+const SnakeGame = () => {
   const [snake, setSnake] = useState(initialSnake);
   const [direction, setDirection] = useState(Direction.RIGHT);
   const [food, setFood] = useState(initialFood);
@@ -26,28 +26,13 @@ const SnakeGame = ({ difficulty }) => {
   const gameLoopIntervalRef = useRef();
 
   useEffect(() => {
-    // Adjust game loop interval based on difficulty
-    let interval = 100; // Default interval
-    switch (difficulty) {
-      case 'easy':
-        interval = 200;
-        break;
-      case 'medium':
-        interval = 100;
-        break;
-      case 'hard':
-        interval = 50;
-        break;
-      default:
-        interval = 100;
-    }
-    gameLoopIntervalRef.current = setInterval(moveSnake, interval);
+    gameLoopIntervalRef.current = setInterval(moveSnake, 100);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       clearInterval(gameLoopIntervalRef.current);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [snake, difficulty]); // Include difficulty in the dependencies array
+  }, [snake]);
 
   useEffect(() => {
     if (isGameOver) {
