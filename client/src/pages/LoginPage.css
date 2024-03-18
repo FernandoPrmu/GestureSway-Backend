@@ -101,6 +101,19 @@
     cursor: pointer;
 }
 
+.submit:hover {
+    background: #3a007f; /* Change background color on hover */
+}
+
+.submit.gray:hover {
+    background: #d5d3d3; /* Change background color on hover for gray buttons */
+}
+
+.submit:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow on hover */
+    transform: scale(1.05); /* Increase size on hover */
+}
+
 
 .gray{
     background: #EAEAEA;

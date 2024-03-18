@@ -1,30 +1,74 @@
-.section1 {
-  background-image: url('../assets/Team.jpg');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.5; 
-  color: white;
-  
+p {
+  font-size: 17px;
+}
+
+.about-img {
+  height: 500px; 
+  overflow: hidden;
+  margin-top: -90px; 
+}
+
+.about-img img {
+  max-height: 100%; 
+  max-height: 100%; 
+  width: 100%; 
 }
 
 .section1 .description {
   display: flex;
 }
 
-.vision-mission {
-  width: 70%;
-  padding-left: 60px;
-}
-
-
-.team-section {
+.vision-mission1 {
   margin-top: 30px;
-  margin-left: 20px;
+  width: 100%;
+  padding-left: 200px;
+  padding-right: 200px;
+  text-align: center;
 }
+
+.vision-mission1 h3 {
+  font-size: 35px;
+  word-spacing: 10px; 
+}
+
+.vision-mission2 {
+  margin-top: 35px;
+  width: 100%;
+  padding-left: 200px;
+  padding-right: 200px;
+  text-align: center;
+}
+
+.vision-mission2 h3 {
+  font-size: 35px; 
+  word-spacing: 10px;
+}
+
+.team-content {
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 90%; 
+  margin-top: 50px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.team-content p{
+  margin-left: 60px;
+}
+
+.team-content h2{
+  font-size: 35px;
+  margin-left: 250px;
+  margin-top: 40px;
+  word-spacing: 10px;
+}
+
 
 .team-description {
   width: 45%;
+  margin-top: 20px;
   margin-bottom: 20px;
+  margin-left: 20px;
   text-align: justify;
 }
 
@@ -34,10 +78,49 @@
 }
 
 .team-photo {
-  width: 25%;
-  margin-right: 20px;
+  width: 40%;
+  height: 40%;
+  margin-right: 70px;
+  margin-top: -580px;
+  box-shadow: 0 6px 35px rgba(1, 1, 1, 1);
 }
 
 .why-this-app {
   padding: 20px;
+}
+
+.why-this-app {
+  display: flex;
+  flex-direction: row; 
+}
+
+.subtopic1,
+.subtopic2,.subtopic3 {
+  flex: 1;
+  margin-top: 60px;
+  text-align: justify;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 2px 35px rgba(1, 1, 1, 1);
+}
+
+.subtopic1:hover,
+.subtopic2:hover,
+.subtopic3:hover {
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; 
+}
+
+.subtopic1 {
+  margin-left: 40px;
+}
+
+.subtopic2 {
+  margin-left: 70px;
+  margin-right: 70px; 
+}
+
+.subtopic3{
+  margin-left: 0px;
+  margin-right: 40px;
 }
