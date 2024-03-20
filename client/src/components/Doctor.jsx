@@ -51,7 +51,7 @@ export default function Test() {
               Dr. Chinthaka Godigamuwa (Visiting Physician, General Hospital Kandy)
             </Card.Title>
             <Card.Text className="custom-card-text">
-              Some quick example text to build on the card title and make up the bulk of the cards content.
+            The project received positive feedback and additional support, emphasising the importance of incorporating hand gestures that ideally mimic natural hand gestures
             </Card.Text>
             <Button variant="primary" className="custom-button" onClick={() => handleShowModal("Description for Dr. Chinthaka Godigamuwa", DImage1)}>
             Learn more
@@ -76,7 +76,7 @@ export default function Test() {
           <Card.Body>
             <Card.Title className="custom-card-title">Dr. Dilushka Jayakody, Former Medical Officer (SLAF).</Card.Title>
             <Card.Text className="custom-card-text">
-              Another example text to build on the card title and make up the bulk of the cards content.
+            The projects concept received positive feedback, emphasising enhancing communication through increased incorporation of hand gestures.
             </Card.Text>
             <Button variant="primary" className="custom-button" onClick={() => handleShowModal("Description for Dr. Dilushka Jayakody", DImage2)}>
               Learn more
