@@ -32,8 +32,7 @@ function Part1() {
         <div className="blue-box" ref={boxRef}>
             <div className="content">
                 <h2>Our Vision</h2>
-                <p>A community where all cats and <br/> kittens are spayed, neutered, safeguarded, or sheltered.</p>
-                <br/>
+                <p>To transform physical therapy for patients with hand mobility issues through an engaging,<br/> accessible, and personalised web-based hand gesture snake game  <br/></p>
                 <a href="/IntroductionPage" className="learn-more-button">Learn More</a>
             </div>
             <img src={image} alt="Description of the image" />

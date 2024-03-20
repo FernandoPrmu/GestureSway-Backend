@@ -23,7 +23,7 @@ function HomePage() {
                 <div className="col-md-3">
                 <Card
                     image={introductionPic} 
-                    title="Introduction" 
+                    title="About US" 
                     text="Introduction about the webapp and Team"
                     path="/IntroductionPage" 
                 />
@@ -47,8 +47,8 @@ function HomePage() {
                 <div className="col-md-3">
                 <Card 
                     image={feedbackPic} 
-                    title="Feedback" 
-                    text="Please review the patient's feedback here." 
+                    title="Game Results Page" 
+                    text="Please review the User's past game results here." 
                     path="/FeedbackPage" 
                 />
                 </div>
