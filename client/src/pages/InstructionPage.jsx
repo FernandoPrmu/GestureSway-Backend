@@ -45,11 +45,12 @@ export default function InstructionPage() {
               <img src={stepThreePic} alt="Step 3"/>
             </div>
             <div className="description-section">
-              <h2>Step 3 : Select the hand to play the game.</h2> 
-              <p>when you click the game interface in the game you must first select the hand to play the game, 
-The hand which  you need an exercise</p> 
+              <h2>Step 3 : Play the game .</h2> 
+              <p>After you select the hand and difficulty level. you can progress to the main part of our web App, which is the game . Now you can play our snake game by using the hand gestures 
+
+mainly there are 4 gestures that you can use inorder to move the snake </p> 
             </div>
-          </div>
+          {/* </div>
 
           <div className="step-section ">
             <div className="description-section">
@@ -68,7 +69,7 @@ The hand which  you need an exercise</p>
 
 mainly there are 4 gestures that you can use inorder to move the snake 
 </p>
-            </div>
+            </div> */}
             {/* <div className="image-section ">
               <img src={StepFivePic} alt="Step 4" /> */}
             {/* </div> */}
