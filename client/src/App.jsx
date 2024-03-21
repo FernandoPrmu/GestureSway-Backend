@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import HomePage from './pages/HomePage';
 import IntroductionPage from './pages/IntroductionPage';
 import InstructionPage from './pages/InstructionPage';
@@ -21,7 +22,7 @@ function App() {
           <Route path='/' Component={HomePage} />
           <Route path='/HomePage' Component={HomePage} />
           <Route path='/GameControls' Component={GameControlsPage} />
-
+          <Route path='/SnakeGame' Component={snakeGame} />
         </Routes>
       </div>
     </Router>

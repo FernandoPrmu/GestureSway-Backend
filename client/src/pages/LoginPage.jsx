@@ -7,7 +7,6 @@ import './LoginPage.css';
 import userIcon from '../assets/person.png';
 import emailIcon from '../assets/email.png';
 import passwordIcon from '../assets/password.png';
-import backgroundImg from '../assets/gamepageimage.jpeg';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -53,33 +52,29 @@ const Signup = () => {
             return;
         }
 
-        const { email, password, age } = formData;
-        if (action === 'Sign In') {
-            axios.post('http://localhost:3001/login', { email, password })
-                .then(response => {
-                    alert(response.data);
-                })
-                .catch(err => {
-                    console.log(err);
-                    alert('An error occurred while signing in.');
+        try {
+            if (action === 'Sign In') {
+                const response = await axios.post('http://localhost:3001/login', { email: formData.email, password: formData.password });
+                alert(response.data);
+            } else {
+                const response = await axios.post('http://localhost:3001/register', { 
+                    username: formData.username,
+                    email: formData.email,
+                    password: formData.password,
+                    age: formData.age 
                 });
-        } else {
-            const { username } = formData;
-            axios.post('http://localhost:3001/register', { username, email, password, age }) 
-                .then(response => {
-                    alert(response.data);
-                    // Clear form data after successful signup
-                    setFormData({
-                        username: '',
-                        email: '',
-                        password: '',
-                        age: '' 
-                    });
-                })
-                .catch(err => {
-                    console.log(err);
-                    alert('An error occurred while signing up.');
+                alert(response.data);
+                // Clear form data after successful signup
+                setFormData({
+                    username: '',
+                    email: '',
+                    password: '',
+                    age: '' 
                 });
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            alert('The password you entered is Incorrect. Please try again');
         }
     };
 

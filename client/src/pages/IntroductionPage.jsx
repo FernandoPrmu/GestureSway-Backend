@@ -2,8 +2,8 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './IntroductionPage.css'; 
-import team1Image from '../assets/team1.jpg'; 
-import Accordion_Intro from '../components/Accordion_Intro';
+import Image from '../assets/Team1.1.jpg'; 
+import team1Image from '../assets/team1.jpg'
 
 export default function IntroductionPage() {
   return (
@@ -13,9 +13,17 @@ export default function IntroductionPage() {
         <br>
         
         </br>
-        <section className="section section1">
-            <div className="vision-mission">       
-                <h3>Our Vision</h3>
+        <div className="about-img">
+          <img src={Image} alt="" />
+          </div>
+            <div className="vision-mission1">  
+                <h3>OUR MISSION</h3>
+                <p>
+                  Our mission is to develop a groundbreaking hand gesture-based snake game tailored for patients with hand mobility issues. By leveraging advanced machine learning algorithms and intuitive gameplay mechanics, we aim to create a rehabilitative gaming platform that not only entertains but also serves as a valuable tool for targeted hand exercises. Through collaboration with healthcare professionals and continuous user feedback, we are dedicated to delivering a user-friendly, inclusive, and impactful solution that promotes rehabilitation, independence, and well-being for individuals with hand mobility challenges.
+                </p> 
+            </div>
+            <div className="vision-mission2">        
+                <h3>OUR VISION</h3>
                 <p>
                   To transform physical therapy for patients with hand mobility issues through an engaging, accessible, and personalised web-based hand gesture snake game, empowering patients to take charge of their rehabilitation journey and enhance their overall hand function.
                 </p>
