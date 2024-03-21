@@ -2,7 +2,7 @@
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card';
-import introductionPic from '../assets/introduction.jpeg';
+import aboutUsPic from '../assets/About-Us.png';
 import instructionPic from '../assets/instruction.jpeg';
 import snakeGamePic from '../assets/snake game.png';
 import feedbackPic from '../assets/feedback.jpeg';
@@ -22,7 +22,7 @@ function HomePage() {
             <div className="row">
                 <div className="col-md-3">
                 <Card
-                    image={introductionPic} 
+                    image={aboutUsPic} 
                     title="About US" 
                     text="Introduction about the webapp and Team"
                     path="/IntroductionPage" 
