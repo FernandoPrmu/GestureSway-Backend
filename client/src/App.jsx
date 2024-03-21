@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-
     <Router>
       <div>
         <Routes>
@@ -23,11 +22,9 @@ function App() {
           <Route path='/HomePage' Component={HomePage} />
           <Route path='/GameControls' Component={GameControlsPage} />
           <Route path='/SnakeGame' Component={snakeGame} />
-
         </Routes>
       </div>
     </Router>
-
   );
 }
 
