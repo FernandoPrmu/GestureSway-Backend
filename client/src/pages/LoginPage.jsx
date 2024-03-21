@@ -86,17 +86,23 @@ const LoginPage = () => {
         <div>
             <Navbar/>
             {isLoggedIn ? (
-                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <div style={{ textAlign: 'left', marginTop: '20px' }}>
                     <div style={{ border: '3px solid black', padding: '20px', maxWidth: '500px', margin: '0 auto', marginBottom: '120px', marginTop: '150px'}}>
-                        <h2>About the Snake Game</h2>
-                        <p>
-                            The Snake Game is a classic video game in which the player controls a snake that moves around the screen eating food pellets.
-                            As the snake eats food, it grows longer, making it more challenging to avoid colliding with itself or the walls.
-                        </p>
-                        <p>
-                            The objective of the game is to eat as much food as possible and achieve the highest score without colliding with obstacles.
-                            The game ends when the snake collides with itself or the walls of the playing area.
-                        </p>
+                        <h2>Game Controls</h2>
+                        <h3>How to play the Snake Game</h3>
+                        <ul>
+                             <li>Be in a position where the web cam clearly detects your hand gestures.</li>
+                             <li> Gestures used 
+                                <ol>
+                                <li>Open Palm - Snake moves up</li>
+                                <li>Closed fist - Snake moves down</li>
+                                <li>Open Palm to Right - Snake moves right</li>
+                                <li>Open Palm to left - Snake moves to the left</li>
+                                </ol>
+                             </li>
+                             <li> Enter Q to quit the Game </li>
+                             </ul>
+                          
                         <Link to="/SnakeGame">
                             <button className="play-button">
                                 Play Game
