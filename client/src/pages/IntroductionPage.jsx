@@ -1,10 +1,10 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/no-unescaped-entities */
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './IntroductionPage.css'; 
 import Image from '../assets/Team1.1.jpg'; 
 import team1Image from '../assets/team1.jpg'
-import Accordion_Intro from '../components/Accordion_Intro';
 
 export default function IntroductionPage() {
   return (
