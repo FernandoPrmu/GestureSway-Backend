@@ -1,3 +1,8 @@
+.instruction-topic{
+  margin-top: 40px;
+  word-spacing: 10px;
+}
+
 .instruction-container {
     text-align: center; /* Center align the content */
     color: rgb(5, 4, 4); /* Set font color to black */

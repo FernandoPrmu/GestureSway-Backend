@@ -14,7 +14,7 @@ export default function InstructionPage() {
         {/* Instruction page topic */}
         <h1 className="instruction-topic">INSTRUCTION PAGE </h1>
       
-          <h4> <b>This page contains all the instructions that should be followed in order to play the game. Lets go through the steps.</b></h4>
+          <p> <b>This page contains all the instructions that should be followed in order to play the game. Lets go through the steps.</b></p>
         
         {/* Steps */}
         <div className="steps-container">
