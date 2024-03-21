@@ -78,10 +78,10 @@ p {
 }
 
 .team-photo {
-  width: 40%;
-  height: 40%;
+  width: 700px;
+  height: 300px;
   margin-right: 70px;
-  margin-top: -580px;
+  margin-top: -550px;
   box-shadow: 0 6px 35px rgba(1, 1, 1, 1);
 }
 

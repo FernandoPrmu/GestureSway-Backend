@@ -3,8 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './IntroductionPage.css'; 
 import Image from '../assets/Team1.1.jpg'; 
-import team1Image from '../assets/team1.jpg'
-import Accordion_Intro from '../components/Accordion_Intro';
+import team1Image from '../assets/sdgp_group1.jpg'
 
 export default function IntroductionPage() {
   return (
