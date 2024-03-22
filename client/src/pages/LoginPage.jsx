@@ -1,5 +1,7 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import axios from 'axios';
@@ -7,17 +9,16 @@ import './LoginPage.css';
 import userIcon from '../assets/person.png';
 import emailIcon from '../assets/email.png';
 import passwordIcon from '../assets/password.png';
-import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
         password: '',
-        age: '' 
+        age: ''
     });
     const [action, setAction] = useState('Sign In');
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,51 +30,32 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // Validation checks
-        if (action === 'Sign Up' && !formData.username) {
-            alert('Please enter a username.');
-            return;
-        }
-        if (!formData.email) {
-            alert('Please enter an email address.');
-            return;
-        }
-        if (!formData.password) {
-            alert('Please enter a password.');
-            return;
-        }
-        if (action === 'Sign Up' && (!formData.age || isNaN(formData.age) || formData.age < 0)) {
-            alert('Please enter a valid age.');
-            return;
-        }
-
-        // Check for invalid input
-        if (action === 'Sign Up' && isNaN(formData.age)) {
-            alert('Invalid input for age. Please enter a number.');
-            return;
-        }
 
         try {
             if (action === 'Sign In') {
                 const response = await axios.post('http://localhost:3001/login', { email: formData.email, password: formData.password });
                 alert(response.data);
-                setIsLoggedIn(true); // Set login status to true
+                setIsLoggedIn(true);
+
+                // Store user email in session storage
+                sessionStorage.setItem('userEmail', formData.email);
             } else {
-                const response = await axios.post('http://localhost:3001/register', { 
+                const response = await axios.post('http://localhost:3001/register', {
                     username: formData.username,
                     email: formData.email,
                     password: formData.password,
-                    age: formData.age 
+                    age: formData.age
                 });
                 alert(response.data);
-                setIsLoggedIn(true); // Set login status to true
+                setIsLoggedIn(true);
+                sessionStorage.setItem('userEmail', formData.email);
+
                 // Clear form data after successful signup
                 setFormData({
                     username: '',
                     email: '',
                     password: '',
-                    age: '' 
+                    age: ''
                 });
             }
         } catch (error) {
@@ -111,7 +93,8 @@ const LoginPage = () => {
                     </div>
                 </div>
             ) : (
-                <div className='login-container'> 
+                // If not logged in, display the login form
+                <div className='login-container'>
                     <div className="login-body">
                         <div className="containerL">
                             <div className="header">
@@ -141,7 +124,6 @@ const LoginPage = () => {
                                         </div>
                                     )}
                                     <div className="submit-container">
-                                        {/* Increase length of the first submit button */}
                                         <button className="submit" style={{ width: '420px', backgroundColor: 'black' }} type="submit">{action}</button>
                                     </div>
                                 </div>
@@ -158,7 +140,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             )}
-            <Footer/>
+            <Footer />
         </div>
     );
 };
