@@ -127,9 +127,22 @@ const SnakeGame = ({ userEmail }) => {
             });
     };
 
+    const handleReplay = () => {
+        setIsGameOver(false);
+        setSnake(initialSnake);
+        setDirection(Direction.RIGHT);
+        setFood(initialFood);
+        setPoints(0);
+    };
+
+    const handleQuit = () => {
+        // Add any necessary actions upon quitting the game
+    };
+
     return (
         <div className="snake-game-container">
             <h1>Snake Game</h1>
+            <div className="score">Score: {points}</div>
             <div className="game-board">
                 {snake.map((segment, index) => (
                     <div
@@ -150,10 +163,15 @@ const SnakeGame = ({ userEmail }) => {
                 ></div>
             </div>
             {isGameOver && (
-                <div className="results-popup">
-                    <p>You scored {points} points!</p>
-                </div>
-            )}
+    <div className="results-popup">
+        <p>You scored {points} points!</p>
+        <div>
+            <button className="action-button" onClick={handleReplay}>Replay</button>
+            <span style={{ margin: '0 10px' }}></span> {/* Add space between buttons */}
+            <button className="action-button" onClick={handleQuit}>Quit</button>
+        </div>
+    </div>
+    )}
         </div>
     );
 };
