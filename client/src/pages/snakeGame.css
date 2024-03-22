@@ -1,11 +1,17 @@
-/* snakeGame.css */
 .snake-game-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  
+}
+
+.score {
+  position: absolute;
+  top: 60px;
+  right: 180px;
+  font-size: 20px;
+  color: rgb(16, 16, 16);
 }
 
 .game-board {
@@ -29,13 +35,12 @@
 
 @keyframes pulse {
   0% {
-    transform: scale(1);
+      transform: scale(1);
   }
   100% {
-    transform: scale(1.1);
+      transform: scale(1.1);
   }
 }
-
 
 .food {
   width: 20px; /* Assuming CELL_SIZE = 20px */
@@ -43,3 +48,31 @@
   background-color: red;
   position: absolute;
 }
+
+.results-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(149, 135, 135, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+
+.results-popup p {
+  font-size: 30px;
+  margin: 0;
+}
+
+.action-button {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: larger;
+}
+
+
