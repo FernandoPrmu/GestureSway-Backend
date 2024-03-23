@@ -28,7 +28,10 @@ const User = mongoose.model("User", userSchema);
 
 // Define schema and model for GameResult
 const gameResultSchema = new mongoose.Schema({
-    userId: mongoose.Schema.Types.ObjectId,
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' // Reference to the User model
+    },
     score: Number,
     timestamp: { type: Date, default: Date.now },
 });
@@ -63,11 +66,16 @@ app.post("/register", (req, res) => {
         .catch((err) => res.status(500).json("Internal server error"));
 });
 
+
 // Route to save game results
 app.post("/save-results", async (req, res) => {
     try {
-        const { userId, score } = req.body;
-        const gameResult = new GameResult({ userId, score });
+        const { email, score } = req.body;
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(404).json("User not found");
+        }
+        const gameResult = new GameResult({ userId: user._id, score }); // Associate the game result with the user's ID
         await gameResult.save();
         res.status(201).json("Game results saved successfully");
     } catch (error) {
@@ -80,7 +88,7 @@ app.post("/save-results", async (req, res) => {
 app.get("/game-results", async (req, res) => {
     try {
         const userId = req.query.userId;
-        const gameResults = await GameResult.find({ userId });
+        const gameResults = await GameResult.find({ userId }).populate('userId', 'email'); // Populate the userId field with email from the User model
         res.status(200).json(gameResults);
     } catch (error) {
         console.error("Error retrieving game results:", error);

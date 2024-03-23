@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './snakeGame.css';
@@ -18,12 +18,14 @@ const Direction = {
 const initialSnake = [{ x: 10, y: 10 }];
 const initialFood = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
 
-const SnakeGame = ({ userEmail }) => {
+const SnakeGame = () => {
     const [snake, setSnake] = useState(initialSnake);
     const [direction, setDirection] = useState(Direction.RIGHT);
     const [food, setFood] = useState(initialFood);
     const [isGameOver, setIsGameOver] = useState(false);
     const [points, setPoints] = useState(0);
+    const [email, setEmail] = useState('');
+    const [showEmailInput, setShowEmailInput] = useState(false);
 
     const gameLoopIntervalRef = useRef();
 
@@ -114,17 +116,20 @@ const SnakeGame = ({ userEmail }) => {
     const endGame = () => {
         setIsGameOver(true);
         clearInterval(gameLoopIntervalRef.current);
-        saveGameResults();
+        setShowEmailInput(true);
     };
 
-    const saveGameResults = () => {
-        axios.post('http://localhost:3001/save-results', { userId: userEmail, score: points })
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.error('Error saving game results:', error);
+    const saveGameResults = async () => {
+        try {
+            const response = await axios.post('http://localhost:3001/save-results', {
+                email: email,
+                score: points,
             });
+            console.log(response.data);
+            setShowEmailInput(false);
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleReplay = () => {
@@ -133,10 +138,16 @@ const SnakeGame = ({ userEmail }) => {
         setDirection(Direction.RIGHT);
         setFood(initialFood);
         setPoints(0);
+        setShowEmailInput(false);
     };
 
     const handleQuit = () => {
-        // Add any necessary actions upon quitting the game
+        setIsGameOver(true);
+        setShowEmailInput(true);
+    };
+
+    const handleEmailSubmit = () => {
+        saveGameResults();
     };
 
     return (
@@ -162,16 +173,38 @@ const SnakeGame = ({ userEmail }) => {
                     }}
                 ></div>
             </div>
+            {showEmailInput && (
+                <div className="email-input">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                    />
+                    <button onClick={handleEmailSubmit}>Submit</button>
+                </div>
+            )}
             {isGameOver && (
-    <div className="results-popup">
-        <p>You scored {points} points!</p>
-        <div>
-            <button className="action-button" onClick={handleReplay}>Replay</button>
-            <span style={{ margin: '0 10px' }}></span> {/* Add space between buttons */}
-            <button className="action-button" onClick={handleQuit}>Quit</button>
-        </div>
-    </div>
-    )}
+                <div className="game-over-popup">
+                    <p>You scored {points} points!</p>
+                    {showEmailInput ? (
+                        <div className="email-input">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Enter your email"
+                            />
+                            <button onClick={handleEmailSubmit}>Submit</button>
+                        </div>
+                    ) : (
+                        <div>
+                            <button onClick={handleReplay}>Replay</button>
+                            <button onClick={handleQuit}>Quit</button>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

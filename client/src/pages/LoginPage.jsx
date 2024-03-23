@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -19,6 +19,16 @@ const LoginPage = () => {
     });
     const [action, setAction] = useState('Sign In');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userEmail, setUserEmail] = useState('');
+
+    useEffect(() => {
+        const storedEmail = sessionStorage.getItem('userEmail');
+        if (storedEmail) {
+            setUserEmail(storedEmail);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,6 +47,9 @@ const LoginPage = () => {
                 alert(response.data);
                 setIsLoggedIn(true);
 
+                // Store user email in state
+                setUserEmail(formData.email);
+
                 // Store user email in session storage
                 sessionStorage.setItem('userEmail', formData.email);
             } else {
@@ -48,6 +61,11 @@ const LoginPage = () => {
                 });
                 alert(response.data);
                 setIsLoggedIn(true);
+
+                // Store user email in state
+                setUserEmail(formData.email);
+
+                // Store user email in session storage
                 sessionStorage.setItem('userEmail', formData.email);
 
                 // Clear form data after successful signup
@@ -60,7 +78,7 @@ const LoginPage = () => {
             }
         } catch (error) {
             console.error('An error occurred:', error);
-            alert('Wrong credentials. Please try again.');
+            alert('Wrong credential. Please try again.');
         }
     };
 
@@ -68,22 +86,23 @@ const LoginPage = () => {
         <div>
             <Navbar/>
             {isLoggedIn ? (
+                // If logged in, display game controls
                 <div style={{ textAlign: 'left', marginTop: '20px' }}>
                     <div style={{ border: '3px solid black', padding: '20px', maxWidth: '500px', margin: '0 auto', marginBottom: '120px', marginTop: '150px'}}>
                         <h2>Game Controls</h2>
                         <h3>How to play the Snake Game</h3>
                         <ul>
-                             <li>Be in a position where the web cam clearly detects your hand gestures.</li>
-                             <li> Gestures used 
+                            <li>Be in a position where the web cam clearly detects your hand gestures.</li>
+                            <li> Gestures used 
                                 <ol>
-                                <li>Open Palm - Snake moves up</li>
-                                <li>Closed fist - Snake moves down</li>
-                                <li>Open Palm to Right - Snake moves right</li>
-                                <li>Open Palm to left - Snake moves to the left</li>
+                                    <li>Open Palm - Snake moves up</li>
+                                    <li>Closed fist - Snake moves down</li>
+                                    <li>Open Palm to Right - Snake moves right</li>
+                                    <li>Open Palm to left - Snake moves to the left</li>
                                 </ol>
-                             </li>
-                             <li> Enter Q to quit the Game </li>
-                             </ul>
+                            </li>
+                            <li> Enter Q to quit the Game </li>
+                        </ul>
                           
                         <Link to="/SnakeGame">
                             <button className="play-button">

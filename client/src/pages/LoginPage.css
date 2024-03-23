@@ -128,11 +128,12 @@
     width: 150px;
     height: 50px;
     color: #fff;
-    background: #4c00b4;
+    background: #000000;
     border-radius: 10px;
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .gray{
