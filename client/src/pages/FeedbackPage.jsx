@@ -1,67 +1,61 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import user_icon from '../assets/person.png';
-import email_icon from '../assets/email.png';
-import password_icon from '../assets/password.png';
-import './LoginPage.css';
+import axios from 'axios';
+import './FeedbackPage.css';
 
-export const LoginSignup = () => {
-    const [action, setAction] = useState("Login");
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    });
+const FeedbackPage = () => {
+    const [gameResults, setGameResults] = useState([]);
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setIsLoading(true);
 
-    const handleLogin = () => {
-        // Clear form data when switching to "Login"
-        setFormData({
-            username: '',
-            email: '',
-            password: ''
-        });
-        setAction("Login");
+        try {
+            const response = await axios.get(`http://localhost:3001/game-results?email=${email}`); // Change userId to email
+            setGameResults(response.data);
+        } catch (error) {
+            setError('Error fetching game results. Please try again.');
+        }
+
+        setIsLoading(false);
     };
 
     return (
         <div>
             <Navbar />
-            <div className='login-body'>
-                <div className='containerL' style={{ marginTop: '100px' }}>
-                    <div className='header'>
-                        <div className='text'>{action}</div>
-                        <div className='underline'></div>
-                    </div>
-                    <div className='inputs'>
-                        {action === "Login" ? null :
-                            <div className='input'>
-                                <img src={user_icon} alt="" />
-                                <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder='Name' />
-                            </div>
-                        }
-
-                        <div className='input'>
-                            <img src={email_icon} alt="" />
-                            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder='Email' />
-                        </div>
-
-                        <div className='input'>
-                            <img src={password_icon} alt="" />
-                            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder='Password' />
-                        </div>
-                    </div>
-
-                    <div className='submit-container' style={{ marginTop: '60px' }}>
-                      <div className={action === "Sign Up" ? "submit gray" : "submit"} onClick={handleLogin}>Login</div>
+            <div className='feedback-body'>
+                <div className='container'>
+                    <h2>Game Results</h2>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor='email'>Enter Email:</label>
+                        <input
+                            type='email'
+                            id='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                        <button type='submit'>Retrieve Results</button>
+                    </form>
+                    {isLoading && <p>Loading...</p>}
+                    {error && <p>{error}</p>}
+                    <div className='game-results'>
+                        {gameResults.length > 0 ? (
+                            gameResults.map((result, index) => (
+                                <div key={index} className='result'>
+                                    <p>Score: {result.score}</p>
+                                    <p>Timestamp: {result.timestamp}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No game results found.</p>
+                        )}
                     </div>
                 </div>
             </div>
@@ -70,4 +64,4 @@ export const LoginSignup = () => {
     );
 };
 
-export default LoginSignup;
+export default FeedbackPage;
