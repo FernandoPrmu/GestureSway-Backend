@@ -83,10 +83,6 @@
     font-size: 18px;
 }
 
-.forgot-password span{
-    color: #4c00b4;
-    cursor: pointer;
-}
 
 .submit-container{
     display: flex;
@@ -100,8 +96,8 @@
     align-items: center;
     width: 150px;
     height: 50px;
-    color: #fff;
-    background: #4c00b4;
+    color: #000000;
+    background: #ffdd00;
     border-radius: 0px;
     font-size: 19px;
     font-weight: 700;
@@ -109,16 +105,19 @@
 }
 
 .submit:hover {
-    background: #3a007f; /* Change background color on hover */
+    background: #000000; 
+    color: white;
 }
 
 .submit.gray:hover {
-    background: #d5d3d3; /* Change background color on hover for gray buttons */
+    background: #ffdd00; 
+    color: #000000;
 }
 
 .submit:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow on hover */
-    transform: scale(1.05); /* Increase size on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.05); 
+    color: white;
 }
 
 .play-button{
