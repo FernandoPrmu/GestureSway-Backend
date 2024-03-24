@@ -143,7 +143,7 @@ const LoginPage = () => {
                                         </div>
                                     )}
                                     <div className="submit-container">
-                                        <button className="submit" style={{ width: '420px', backgroundColor: 'black' }} type="submit">{action}</button>
+                                        <button className="submit" style={{ width: '420px' }} type="submit">{action}</button>
                                     </div>
                                 </div>
                             </form>

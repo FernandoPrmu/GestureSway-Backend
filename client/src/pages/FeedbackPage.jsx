@@ -55,7 +55,7 @@ const FeedbackPage = () => {
                             <table className='results-table'>
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>No</th>
                                         <th>Score</th>
                                         <th>Timestamp</th>
                                     </tr>
@@ -76,7 +76,7 @@ const FeedbackPage = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     );
 };

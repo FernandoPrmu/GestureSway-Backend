@@ -9,10 +9,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import HealingIcon from '@mui/icons-material/Healing';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-import LoginIcon from '@mui/icons-material/Login';
 
 const pages = ['Home', 'Instructions', 'Game', 'Feedback', 'About us'];
 const pageRoutes = ['/HomePage', '/InstructionPage', '/GamePage', '/FeedbackPage', '/IntroductionPage'];
@@ -26,9 +24,6 @@ function ResponsiveAppBar() {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -60,7 +55,6 @@ function ResponsiveAppBar() {
           >
             GestureSway
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -129,13 +123,7 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Login">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} color="inherit">
-                <LoginIcon />
-              </IconButton>
-            </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-user-appbar" // Corrected id here

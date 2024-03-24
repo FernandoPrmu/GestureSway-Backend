@@ -18,6 +18,7 @@
   
   .navbar-link:hover {
     text-decoration: none; /* Remove underline on hover */
+    
   }
   
   .navbar-icon-button {
