@@ -2,7 +2,7 @@
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card';
-import aboutUsPic from '../assets/About-Us.png';
+import aboutUsPic from '../assets/About_us.jpg';
 import instructionPic from '../assets/instruction.jpeg';
 import snakeGamePic from '../assets/snake game.png';
 import feedbackPic from '../assets/feedback.jpeg';
