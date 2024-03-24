@@ -2,6 +2,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { io } from "socket.io-client";
+
 import './snakeGame.css';
 
 const ROWS = 30;
@@ -22,6 +24,7 @@ const SnakeGame = () => {
     const [snake, setSnake] = useState(initialSnake);
     const [direction, setDirection] = useState(Direction.RIGHT);
     const [food, setFood] = useState(initialFood);
+    const [length, setLength] = React.useState(0);
     const [isGameOver, setIsGameOver] = useState(false);
     const [points, setPoints] = useState(0);
     const [email, setEmail] = useState('');
@@ -38,18 +41,39 @@ const SnakeGame = () => {
         };
     }, [snake]);
 
-    const handleKeyDown = (e) => {
-        switch (e.key) {
-            case 'ArrowUp':
+    const socket = io("http://127.0.0.1:5000");
+
+    socket.on("connect", () => {
+        console.log("WebSocket connection established");
+    });
+    
+    socket.on("message", (message) => {
+        console.log("Received gesture from server:", message);
+        socket.emit("Received")
+        setLength(message)
+        console.log("Length", length)
+    });
+    
+    socket.on("disconnect", () => {
+        console.log("WebSocket connection closed");
+    });
+
+    useEffect(() => {
+        handleKeyDown();
+      }, [length]);
+
+    const handleKeyDown = () => {
+        switch (length) {
+            case 8:
                 if (direction !== Direction.DOWN) setDirection(Direction.UP);
                 break;
-            case 'ArrowDown':
+            case 9:
                 if (direction !== Direction.UP) setDirection(Direction.DOWN);
                 break;
-            case 'ArrowLeft':
+            case 14:
                 if (direction !== Direction.RIGHT) setDirection(Direction.LEFT);
                 break;
-            case 'ArrowRight':
+            case 15:
                 if (direction !== Direction.LEFT) setDirection(Direction.RIGHT);
                 break;
             case 'q':
