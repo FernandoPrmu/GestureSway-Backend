@@ -29,8 +29,7 @@ export default function Test() {
       <div className="card-wrapper">
         <div className="caption_1">
           <h1>
-            Domain experts' <br />
-            opinion about GestureSway
+            Domain experts' opinion about GestureSway
           </h1>
         </div>
         <Card className="custom-card-container">

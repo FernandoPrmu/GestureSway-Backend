@@ -16,16 +16,21 @@
 }
 
 .caption_1 {
-  margin-right: 10px; /* Adjust as needed to create space between the caption and the cards */
+  margin-right: -3%; 
   top: 50%;
   border-radius: 10px;
+  position: relative;
 }
 
 .caption_1 h1 {
+  position:relative;
+  margin-top: 50%;
+  top: 30%;
+  margin: auto;
   font-size: 50px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
-  animation: slideInRight 1s ease-out; /* Apply animation to h2 */
+  animation: slideInRight 1s ease-out;
 }
 
 .custom-card-container {
