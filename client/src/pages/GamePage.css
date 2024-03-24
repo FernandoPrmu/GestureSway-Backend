@@ -37,7 +37,7 @@
     background-color: #000000;
     color: #ffffff;
     padding: 15px 30px;
-    border: none;
+    border: solid black;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -45,6 +45,6 @@
   }
   
   .login-button:hover {
-    background-color: #333333;
+    background-color: #ffdd00;
   }
   
