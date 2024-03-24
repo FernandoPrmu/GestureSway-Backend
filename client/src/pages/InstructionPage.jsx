@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Navbar from '../components/Navbar';
 import './InstructionPage.css'; 
 import stepOnePic from '../assets/Step1 (1).png';

@@ -26,11 +26,16 @@ const FeedbackPage = () => {
         setIsLoading(false);
     };
 
+    const formatTimestamp = (timestamp) => {
+        const options = { timeZone: 'Asia/Colombo', hour12: true };
+        return new Date(timestamp).toLocaleString('en-US', options);
+    };
+
     return (
         <div>
             <Navbar />
             <div className='feedback-body'>
-                <div className='container'>
+                <div className='container-F'>
                     <h2>Game Results</h2>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor='email'>Enter Email:</label>
@@ -47,12 +52,24 @@ const FeedbackPage = () => {
                     {error && <p>{error}</p>}
                     <div className='game-results'>
                         {gameResults.length > 0 ? (
-                            gameResults.map((result, index) => (
-                                <div key={index} className='result'>
-                                    <p>Score: {result.score}</p>
-                                    <p>Timestamp: {result.timestamp}</p>
-                                </div>
-                            ))
+                            <table className='results-table'>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Score</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {gameResults.map((result, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td>{result.score}</td>
+                                            <td>{formatTimestamp(result.timestamp)}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         ) : (
                             <p>No game results found.</p>
                         )}
