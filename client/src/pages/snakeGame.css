@@ -76,11 +76,37 @@
   border-radius: 20px;
   color: white;
   text-align: center;
-}
-
-.email-input{
   font-size: 30px;
   margin: 0;
+}
+
+.Last-Button-1{
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(149, 135, 135, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin: 0;
+}
+
+.Last-Button-2{
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(149, 135, 135, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin: 0;
+  text-decoration: none;
 }
 
 .action-button {

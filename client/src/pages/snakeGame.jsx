@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './snakeGame.css';
 
@@ -199,8 +200,8 @@ const SnakeGame = () => {
                         </div>
                     ) : (
                         <div>
-                            <button onClick={handleReplay}>Replay</button>
-                            <button onClick={handleQuit}>Quit</button>
+                            <button onClick={handleReplay} className="Last-Button-1">Replay</button>
+                            <Link to="/FeedbackPage" className="Last-Button-2">See overall results</Link>
                         </div>
                     )}
                 </div>
