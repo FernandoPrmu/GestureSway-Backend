@@ -17,7 +17,7 @@ const FeedbackPage = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.get(`http://localhost:3001/game-results?email=${email}`); // Change userId to email
+            const response = await axios.get(`http://localhost:3001/game-results?email=${email}`);
             setGameResults(response.data);
         } catch (error) {
             setError('Error fetching game results. Please try again.');

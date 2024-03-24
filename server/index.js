@@ -87,14 +87,19 @@ app.post("/save-results", async (req, res) => {
 // Route to retrieve game results
 app.get("/game-results", async (req, res) => {
     try {
-        const userId = req.query.userId;
-        const gameResults = await GameResult.find({ userId }).populate('userId', 'email'); // Populate the userId field with email from the User model
+        const email = req.query.email;
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(404).json("User not found");
+        }
+        const gameResults = await GameResult.find({ userId: user._id });
         res.status(200).json(gameResults);
     } catch (error) {
         console.error("Error retrieving game results:", error);
         res.status(500).json("Internal server error");
     }
 });
+
 
 // Start the server
 const PORT = 3001;
