@@ -20,6 +20,7 @@ const LoginPage = () => {
     const [action, setAction] = useState('Sign In');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const storedEmail = sessionStorage.getItem('userEmail');
@@ -40,6 +41,17 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validations
+        if (action === 'Sign Up' && (!formData.username || !formData.age)) {
+            setError('Please enter username and age');
+            return;
+        }
+
+        if (!formData.email || !formData.password) {
+            setError('Please enter email and password');
+            return;
+        }
 
         try {
             if (action === 'Sign In') {
@@ -120,6 +132,7 @@ const LoginPage = () => {
                                 <div className="text">{action === 'Sign In' ? 'Sign In' : 'Sign Up'}</div>
                                 <div className="underline"></div>
                             </div>
+                            {error && <div style={{ color: 'red' }}>{error}</div>}
                             <form onSubmit={handleSubmit}>
                                 <div className="inputs">
                                     {action === 'Sign Up' && (
