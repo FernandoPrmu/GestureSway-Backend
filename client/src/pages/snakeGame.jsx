@@ -42,6 +42,10 @@ const SnakeGame = () => {
         };
     }, [snake]);
 
+    useEffect(() => {
+        handleKeyDown();
+      }, [length]);
+
     const socket = io("http://127.0.0.1:5000");
 
     socket.on("connect", () => {
@@ -59,31 +63,29 @@ const SnakeGame = () => {
         console.log("WebSocket connection closed");
     });
 
-    useEffect(() => {
-        handleKeyDown();
-      }, [length]);
-
-    const handleKeyDown = () => {
-        switch (length) {
-            case 8:
-                if (direction !== Direction.DOWN) setDirection(Direction.UP);
-                break;
-            case 9:
-                if (direction !== Direction.UP) setDirection(Direction.DOWN);
-                break;
-            case 14:
-                if (direction !== Direction.RIGHT) setDirection(Direction.LEFT);
-                break;
-            case 15:
-                if (direction !== Direction.LEFT) setDirection(Direction.RIGHT);
-                break;
-            case 'q':
-                endGame();
-                break;
-            default:
-                break;
+    const handleKeyDown = (event) => {
+        if (event && event.key === 'q') {
+            endGame();
+        } else {
+            switch (length) {
+                case 8:
+                    if (direction !== Direction.DOWN) setDirection(Direction.UP);
+                    break;
+                case 9:
+                    if (direction !== Direction.UP) setDirection(Direction.DOWN);
+                    break;
+                case 14:
+                    if (direction !== Direction.RIGHT) setDirection(Direction.LEFT);
+                    break;
+                case 15:
+                    if (direction !== Direction.LEFT) setDirection(Direction.RIGHT);
+                    break;
+                default:
+                    break;
+            }
         }
     };
+
 
     const moveSnake = () => {
         if (isGameOver) return;
@@ -103,6 +105,9 @@ const SnakeGame = () => {
                 break;
             case Direction.RIGHT:
                 head.x = (head.x + 1) % COLS;
+                break;
+            case 'q':
+                endGame();
                 break;
             default:
                 break;
